@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1f16" />
+    <title>سالم الكوكي — مستشار ومرافق ميداني في المشاريع الفلاحية</title>
+    <meta name="description"
+        content="الاستشارة، التكوين والمرافقة الميدانية في تربية الأبقار، الأغنام، الدواجن وتربية النحل. تقنيات حديثة للتغذية وخلطات علفية بالضيعة مع التحكم في التكاليف." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Dark green theme */
+            --bg: #0b1f16;
+            /* page background */
+            --card: #0e261b;
+            /* card surfaces */
+            --muted: #9fb3a9;
+            /* subdued text */
+            --accent: #22c55e;
+            /* primary accent (green) */
+            --glass: rgba(255, 255, 255, 0.04);
+            --max-width: 1300px;
+            --radius: 14px;
+            font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #07180f 0%, #0b1f16 60%);
+            background-color: #0b1f16;
+            /* solid fallback */
+            background-repeat: no-repeat;
+            /* never tile */
+            background-attachment: fixed;
+            /* stay continuous while scrolling */
+            color: #e6f2eb;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 28px
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            position: relative;
+        }
+
+        .brand {
+            display: flex;
+            gap: 14px;
+            align-items: center
+        }
+
+        .logo {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #065f46, #16a34a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #04130d;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55)
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.06);
+            color: #e6f2eb;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .cta {
+            background: var(--accent);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px;
+            align-items: center;
+            padding: 36px 0
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin: 0 0 10px 0
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin: 0 0 18px 0
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px
+        }
+
+        .card {
+            background: var(--card);
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5)
+        }
+
+        .profile-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+            padding: 18px;
+            border-radius: 12px
+        }
+
+        .profile-card h3 {
+            margin: 0 0 6px 0
+        }
+
+        .profile-card p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 22px
+        }
+
+        .service {
+            background: var(--glass);
+            padding: 16px;
+            border-radius: 12px
+        }
+
+        .service h4 {
+            margin: 0 0 8px 0
+        }
+
+        .about {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            padding: 36px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            flex-wrap: wrap;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover
+        }
+
+        /* About media column */
+        .about-media {
+            width: min(360px, 100%);
+            flex-shrink: 0;
+        }
+
+        .testimonials {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 14px;
+            border-radius: 12px
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .gallery figure {
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: var(--glass);
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            transition: transform .3s ease;
+        }
+
+        .gallery figure:hover img {
+            transform: scale(1.04);
+        }
+
+        .gallery figcaption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 8px 10px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+            color: #e6f2eb;
+            font-size: 13px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 28px 0;
+            margin-top: 36px;
+            color: var(--muted)
+        }
+
+        @media (max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .services {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .cards {
+                grid-template-columns: 1fr
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:620px) {
+            .services {
+                grid-template-columns: 1fr
+            }
+
+            .hero h1 {
+                font-size: 26px
+            }
+
+            .nav-hidden {
+                display: none
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            /* Overlay mobile nav when opened */
+            .nav-hidden.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                right: 16px;
+                left: 16px;
+                top: 64px;
+                background: var(--card);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+                padding: 12px;
+                gap: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+                z-index: 999;
+            }
+
+            .container {
+                padding: 18px;
+            }
+
+            /* Stack About section on small screens */
+            .about {
+                flex-direction: column;
+                gap: 16px !important;
+                padding: 24px 0 !important;
+            }
+
+            .about-media {
+                width: 100% !important;
+            }
+
+            .about-media img {
+                aspect-ratio: 4 / 3;
+                height: auto;
+            }
+        }
+
+        .form {
+            background: var(--card);
+            padding: 16px;
+            border-radius: 12px
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 6px
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background-color: #000f02;
+            /* ensure dark control surface */
+            color: inherit;
+            font-family: inherit;
+        }
+
+        /* Force dark dropdown UI */
+        select {
+            color-scheme: dark;
+            /* hint browsers to render dark popups */
+        }
+
+        /* Dropdown list options (Chromium/Firefox) */
+        select option {
+            background-color: #0a0a0a;
+            /* black options panel */
+            color: #e6f2eb;
+        }
+
+        select option:hover,
+        select option:checked {
+            background-color: #111;
+            /* dark hover/selected */
+            color: #e6f2eb;
+        }
+
+        button {
+            background: var(--accent);
+            border: none;
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: #042;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        /* Floating WhatsApp button */
+        .whatsapp-fab {
+            position: fixed;
+            inset-block-end: calc(16px + env(safe-area-inset-bottom));
+            inset-inline-end: 16px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            /* WhatsApp green */
+            color: #04130d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform .2s ease, box-shadow .2s ease;
+            right: 16px;
+        }
+
+        .whatsapp-fab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        .whatsapp-fab svg {
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+        }
+
+        @media (max-width: 620px) {
+            .whatsapp-fab {
+                width: 52px;
+                height: 52px;
+                inset-inline-end: 12px;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo">
+                    <img src="small.png" alt="Logo"
+                        style="width:100%;height:100%;object-fit:contain;border-radius:inherit;display:block;" />
+                </div>
+                <div>
+                    <div style="font-weight:800">سالم الكوكي</div>
+                    <div style="font-size:13px;color:var(--muted)">مرافق ميداني و خبير في إنجاح المشاريع الفلاحية</div>
+                </div>
+            </div>
+            <nav id="site-nav" class="nav-hidden">
+                <a href="#services">الخدمات</a>
+                <a href="#about">من أنا</a>
+                <a href="#testimonials">آراء العملاء</a>
+                <a href="#gallery">المعرض</a>
+                <a href="#contact" class="cta">احجز استشارة</a>
+            </nav>
+            <button class="menu-toggle"
+                style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+                aria-controls="site-nav" aria-expanded="false" onclick="toggleMenu(event)">القائمة</button>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div>
+                    <h1 style="line-height: 1.2;">حلول عملية وعصرية لمشاريع تربية الماشية والنحل</h1>
+                    <p>مرافقة شاملة من الفكرة إلى التنفيذ — التوجيه الفني، التكوين، الزيارات الميدانية، استراتيجيات
+                        التغذية والتحكم في التكاليف في مشاريع الأبقار، الأغنام، الدواجن والنحل.</p>
+
+
+
+                    <div class="services" id="services">
+                        <div class="service">
+                            <h4> مرافقة ميدانية 👨‍🌾</h4>
+                            <p class="small">زيارات عملية لتشخيص الضيعات، تنفيذ التحسينات وتدريب الفرق مباشرة في
+                                الميدان.</p>
+                        </div>
+                        <div class="service">
+                            <h4>التغذية والتحكم في التكاليف ⚖️</h4>
+                            <p class="small">تصميم خلطات علفية بالضيعة وبرامج تغذية اقتصادية تقلل التكاليف دون التأثير
+                                على الإنتاجية.
+                            </p>
+                        </div>
+                        <div class="service">
+                            <h4> مشاريع تربية الماشية 🐑</h4>
+                            <p class="small">
+                                إستشارات فينة - برمجة النشاط و إستنباط الحلول - إقتراحات عملية للحد من التكلفة
+                            </p>
+
+                        </div>
+                        <div class="service">
+                            <h4>الدواجن 🐓</h4>
+                            <p class="small">الإقتراحات و التنفيذ و المتابعة الميدانية</p>
+                        </div>
+                        <div class="service">
+                            <h4>تربية النحل 🐝</h4>
+                            <p class="small">إنشاء مناحل عصرية - النصح و الإرشاد المستمر و تحسين جودة منتوج النحل</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside style="max-width:420px">
+                    <div class="form">
+                        <h3 style="margin-top:0">اطلب استشارة 📝</h3>
+                        <p class="small">أخبرني عن مشروعك وسأقترح أفضل الخطوات التالية.</p>
+                        <form id="contactForm" onsubmit="return submitForm(event)">
+                            <label for="name">الاسم الكامل</label>
+                            <input id="name" name="name" required />
+
+                            <label for="phone">الهاتف / واتساب</label>
+                            <input id="phone" name="phone" required />
+
+                            <label for="service">نوع المشروع</label>
+                            <select id="service" name="service"
+                                style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                                <option>إختر...</option>
+                                <option>أبقار</option>
+                                <option>أغنام</option>
+                                <option>دواجن</option>
+                                <option>نحل</option>
+                                <option>مختلط / استشارة</option>
+                            </select>
+
+                            <label for="message">وصف مختصر</label>
+                            <textarea id="message" name="message" rows="4"
+                                placeholder="مثال: 50 دجاجة، بناية موجودة، أحتاج خطة تغذية" required></textarea>
+
+                            <button type="submit"
+                                style="width:100%;margin-top:12px;
+                                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">إرسال
+                                الطلب</button>
+                        </form>
+                        <p id="formMsg" class="small" style="margin-top:10px"></p>
+                    </div>
+
+
+                </aside>
+            </section>
+
+            <section id="gallery" style="padding-top:18px">
+                <h2>المعرض</h2>
+                <p class="small">صور توضيحية من الزيارات الميدانية والتكوين والتطبيقات العملية.</p>
+                <div class="gallery">
+                    <figure>
+                        <a href="salem.png" target="_blank" rel="noopener">
+                            <img src="salem.png" alt="زيارة ميدانية وتشخيص الضيعة" loading="lazy">
+                        </a>
+                        <figcaption>زيارة ميدانية وتشخيص الضيعة</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="salem.png" target="_blank" rel="noopener">
+                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
+                        </a>
+                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="salem.png" target="_blank" rel="noopener">
+                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
+                        </a>
+                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="salem.png" target="_blank" rel="noopener">
+                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
+                        </a>
+                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="salem.png" target="_blank" rel="noopener">
+                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
+                        </a>
+                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="salem.png" target="_blank" rel="noopener">
+                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
+                        </a>
+                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
+                    </figure>
+
+                </div>
+            </section>
+
+            <section id="about" class="about"
+                style="display:flex;align-items:flex-start;gap:40px;padding:40px 0;flex-wrap:wrap;direction:rtl;">
+                <div style="flex:1;min-width:280px">
+                    <h2 style="font-size:2em;margin-bottom:16px;">من هو سالم الكوكي؟</h2>
+                    <p class="small" style="line-height:1.8; font-size:1.1em; color:#d6d6d6;">
+                        أقدّم دعماً فنياً وعملياً واقتصادياً للمشاريع الفلاحية الصغيرة والمتوسطة. أدمج بين التشخيص
+                        الميداني واستخدام
+                        التقنيات الحديثة في التغذية وتصميم الخلطات العلفية بالضيعة
+                        <br>
+                        خبرة طويلة في ميدان الإنتاج الحيواني و تربية النحل مع إمكانية التكوين النظري و الميداني في كل
+                        هذه المجالات الفلاحية
+                    </p>
+
+                    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+                        <div
+                            style="background:var(--glass);padding:12px 16px;border-radius:12px;font-weight:500;transition:0.3s;cursor:default;">
+                            تكوين وبناء القدرات</div>
+                        <div
+                            style="background:var(--glass);padding:12px 16px;border-radius:12px;font-weight:500;transition:0.3s;cursor:default;">
+                            مرافقة ميدانية</div>
+                        <div
+                            style="background:var(--glass);padding:12px 16px;border-radius:12px;font-weight:500;transition:0.3s;cursor:default;">
+                            تصميم خلطات علفية</div>
+                    </div>
+
+                    <h3 style="margin-top:28px;font-size:1.5em;">المنهجية</h3>
+                    تتم المرافقة الميدانية حسب إتفاق واضح ومحدد الخطوات:
+                    <p class="small" style="line-height:1.8;font-size:1.05em;color:#d6d6d6;">
+                        1) <strong>التشخيص</strong> — زيارة ميدانية دقيقة وسريعة.<br>
+                        2) <strong>التصميم</strong> — إعداد خطة أو أكثر في الغرض نتيجة التشخيص.<br>
+                        3) <strong>التنفيذ</strong> — إشراف مباشر وتكوين الفرق الميدانية.<br>
+                        4) <strong>المتابعة</strong> — مراقبة النتائج للتحسين في الإنتاجية و تحقيق إنتاج وفير.
+
+                    </p>
+                </div>
+
+                <div class="about-media">
+                    <img src="salem.png" alt="فلاح في الحقل"
+                        style="width:100%;border-radius:12px;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
+                </div>
+            </section>
+
+
+            <section id="testimonials" style="padding-top:18px">
+                <h2>آراء العملاء</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <strong>عمر — مربّي دواجن ⭐⭐⭐⭐⭐</strong>
+                        <p class="small">"أعاد سالم تصميم برنامج التغذية لدينا — انخفضت الوفيات وتحسنت تحويلات العلف.
+                            كانت الزيارات واضحة وعملية."</p>
+                    </div>
+                    <div class="testimonial">
+                        <div><strong>فاطمة — نحّالة ⭐⭐⭐⭐⭐</strong></div>
+                        <p class="small">"كانت الحصص التدريبية تطبيقية. زدنا من إنتاج العسل بفضل تغييرات بسيطة في مواقع
+                            الخلايا والتغذية."</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" style="margin-top:40px;padding:40px 0;direction:rtl;">
+                <h2 style="font-size:2em;margin-bottom:20px;text-align:right;">التواصل والتعريف بالأسعار</h2>
+
+                <div class="grid-2" style="display:flex;gap:40px;flex-wrap:wrap;">
+                    <div class="form"
+                        style="flex:1;min-width:280px;padding:24px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+                        <h4 style="margin-top:0;font-size:1.3em;color:#fff;">معلومات الاتصال</h4>
+                        <p class="small" style="line-height:1.8;font-size:1.05em;color:#fff;">
+                            <strong>📞 الهاتف / واتساب:</strong> <br>‎+216 97 27 99 62<br>
+                            <strong>📧 البريد الإلكتروني:</strong> <br> salem.kouki@yahoo.fr<br>
+                            <strong>🗺️ الموقع:</strong> بنزرت — تونس — إمكانية التنقل لجميع الولايات
+                        </p>
+
+                        <p class="small" style="line-height:1.8;font-size:1.05em;color:#fff;margin-top:16px;">
+                            <strong>الخدمات المتاحة:</strong><br>
+                            • زيارات ميدانية متعددة حسب الطلب<br>
+
+                            • حصص تكوين حسب الطلب<br>
+                            <em style="font-weight: 700; font-size: 20px;">عروض أسعار مخصصة تُقدّم بعد الجلسة
+                                الأولى.</em>
+                        </p>
+                    </div>
+
+                    <!-- You can add a contact form or map in the second column if needed -->
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+                <div>
+                    <strong>سالم الكوكي</strong>
+                    <div class="small">مرافق ميداني و خبير في إنجاح المشاريع الفلاحية</div>
+                </div>
+                <div class="small">© <span id="year"></span> •سالم الكوكي </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a class="whatsapp-fab" href="https://wa.me/21697279962?text=مرحبا، إريد حجز إستشارة" target="_blank" rel="noopener"
+        aria-label="تواصل عبر واتساب">
+        <svg width="800" height="800" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M26.576 5.363a14.82 14.82 0 0 0-10.511-4.354C7.856 1.009 1.2 7.664 1.2 15.874c0 2.732.737 5.291 2.022 7.491l-.038-.07-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h.006c8.209-.003 14.862-6.659 14.862-14.868a14.82 14.82 0 0 0-4.349-10.507zM16.062 28.228h-.006c-2.319 0-4.489-.64-6.342-1.753l.056.031-.451-.267-4.675 1.227 1.247-4.559-.294-.467a12.23 12.23 0 0 1-1.889-6.565c0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353-5.53 12.353-12.353 12.353zm6.776-9.251c-.371-.186-2.197-1.083-2.537-1.208-.341-.124-.589-.185-.837.187-.246.371-.958 1.207-1.175 1.455-.216.249-.434.279-.805.094a10.2 10.2 0 0 1-2.997-1.852l.01.009a11.2 11.2 0 0 1-2.037-2.521l-.028-.052c-.216-.371-.023-.572.162-.757.167-.166.372-.434.557-.65.146-.179.271-.384.366-.604l.006-.017a.68.68 0 0 0-.033-.653l.002.003c-.094-.186-.836-2.014-1.145-2.758-.302-.724-.609-.625-.836-.637-.216-.01-.464-.012-.712-.012-.395.01-.746.188-.988.463l-.001.002a4.15 4.15 0 0 0-1.299 3.102v-.004a7.23 7.23 0 0 0 1.527 3.857l-.012-.015a16.7 16.7 0 0 0 6.251 5.564l.094.043c.548.248 1.25.513 1.968.74l.149.041a5.1 5.1 0 0 0 2.368.143l-.031.004a3.84 3.84 0 0 0 2.497-1.749l.009-.017a3.1 3.1 0 0 0 .214-1.784l.003.019c-.092-.155-.34-.247-.712-.434z" />
+        </svg>
+        <span class="sr-only">تواصل عبر واتساب</span>
+    </a>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Fluid hero heading size (override any inline font-size)
+        const heroH1 = document.querySelector('.hero h1');
+        if (heroH1) {
+            heroH1.style.fontSize = 'clamp(22px, 5vw, 40px)';
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const msg = document.getElementById('message').value.trim();
+            if (!name || !phone || !msg) { document.getElementById('formMsg').textContent = 'الرجاء إكمال جميع الحقول.'; return false }
+            document.getElementById('formMsg').textContent = 'شكراً! تم استلام طلبك وسيتواصل معك سالم قريباً.';
+            e.target.reset();
+            return false;
+        }
+
+        function estimate() {
+            const type = document.getElementById('qType').value;
+            const scale = document.getElementById('qScale').value || 'الحجم القياسي';
+            const base = { 'قطيع دجاج (صغير)': 120, 'قطيع أغنام': 150, 'وحدة أبقار': 220, 'نحل': 100 }[type] || 120;
+            document.getElementById('estimateMsg').textContent = 'ابتداءً من ~' + base + ' دينار (تقديري) لـ ' + scale;
+        }
+
+        // Mobile menu toggle
+        function toggleMenu(e) {
+            const nav = document.getElementById('site-nav');
+            const open = !nav.classList.contains('open');
+            nav.classList.toggle('open', open);
+            e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        // Close menu after navigation
+        document.querySelectorAll('#site-nav a').forEach(a => a.addEventListener('click', () => {
+            const nav = document.getElementById('site-nav');
+            nav.classList.remove('open');
+            const btn = document.querySelector('.menu-toggle');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }));
+    </script>
+</body>
+
+</html>
