@@ -537,7 +537,7 @@
                     <div class="form">
                         <h3 style="margin-top:0">اطلب استشارة 📝</h3>
                         <p class="small">أخبرني عن مشروعك وسأقترح أفضل الخطوات التالية.</p>
-                        <form id="contactForm" onsubmit="return submitForm(event)">
+                        <form id="contactForm" action="https://formbold.com/s/6rpND" method="POST">
                             <label for="name">الاسم الكامل</label>
                             <input id="name" name="name" required />
 
@@ -734,16 +734,7 @@
             heroH1.style.fontSize = 'clamp(22px, 5vw, 40px)';
         }
 
-        function submitForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const msg = document.getElementById('message').value.trim();
-            if (!name || !phone || !msg) { document.getElementById('formMsg').textContent = 'الرجاء إكمال جميع الحقول.'; return false }
-            document.getElementById('formMsg').textContent = 'شكراً! تم استلام طلبك وسيتواصل معك سالم قريباً.';
-            e.target.reset();
-            return false;
-        }
+        // Removed custom submit handler to allow native form POST to FormBold
 
         function estimate() {
             const type = document.getElementById('qType').value;
