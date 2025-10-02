@@ -24,456 +24,14 @@
     <meta property="og:image" content="https://koukiconseil.com/thumbnail.png" />
     <link rel="manifest" href="/site.webmanifest">
 
-    <style>
-        :root {
-            /* Dark green theme */
-            --bg: #0b1f16;
-            /* page background */
-            --card: #0e261b;
-            /* card surfaces */
-            --muted: #9fb3a9;
-            /* subdued text */
-            --accent: #22c55e;
-            /* primary accent (green) */
-            --glass: rgba(255, 255, 255, 0.04);
-            --max-width: 1300px;
-            --radius: 14px;
-            font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-        }
+    <!-- Fancyapps UI styles for Carousel + Fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.lazyload.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.arrows.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.thumbs.css" />
 
-        * {
-            box-sizing: border-box
-        }
-
-        html,
-        body {
-            min-height: 100%;
-        }
-
-        body {
-            margin: 0;
-            background: linear-gradient(180deg, #07180f 0%, #0b1f16 60%);
-            background-color: #0b1f16;
-            /* solid fallback */
-            background-repeat: no-repeat;
-            /* never tile */
-            background-attachment: fixed;
-            /* stay continuous while scrolling */
-            color: #e6f2eb;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 28px
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 0;
-            position: relative;
-        }
-
-        .brand {
-            display: flex;
-            gap: 14px;
-            align-items: center
-        }
-
-        .logo {
-            width: 54px;
-            height: 54px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #065f46, #16a34a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: #04130d;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55)
-        }
-
-        nav {
-            display: flex;
-            gap: 18px;
-            align-items: center
-        }
-
-        nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 600
-        }
-
-        /* Mobile menu button */
-        .menu-toggle {
-            display: none;
-            background: rgba(255, 255, 255, 0.06);
-            color: #e6f2eb;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .cta {
-            background: var(--accent);
-            color: white;
-            padding: 10px 14px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 420px;
-            gap: 28px;
-            align-items: center;
-            padding: 36px 0
-        }
-
-        .hero h1 {
-            font-size: 32px;
-            margin: 0 0 10px 0
-        }
-
-        .hero p {
-            color: var(--muted);
-            margin: 0 0 18px 0
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 16px
-        }
-
-        .card {
-            background: var(--card);
-            padding: 14px;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5)
-        }
-
-        .profile-card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
-            padding: 18px;
-            border-radius: 12px
-        }
-
-        .profile-card h3 {
-            margin: 0 0 6px 0
-        }
-
-        .profile-card p {
-            margin: 0;
-            color: var(--muted)
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 22px
-        }
-
-        .service {
-            background: var(--glass);
-            padding: 16px;
-            border-radius: 12px
-        }
-
-        .service h4 {
-            margin: 0 0 8px 0
-        }
-
-        .about {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            padding: 36px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            flex-wrap: wrap;
-        }
-
-        .about img {
-            width: 100%;
-            border-radius: 12px;
-            object-fit: cover
-        }
-
-        /* About media column */
-        .about-media {
-            width: min(360px, 100%);
-            flex-shrink: 0;
-        }
-
-        .testimonials {
-            margin-top: 18px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px
-        }
-
-        .testimonial {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 14px;
-            border-radius: 12px
-        }
-
-        /* Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 18px;
-        }
-
-        .gallery figure {
-            margin: 0;
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            background: var(--glass);
-        }
-
-        .gallery img {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            height: auto;
-            object-fit: cover;
-            display: block;
-            transition: transform .3s ease;
-        }
-
-        .gallery figure:hover img {
-            transform: scale(1.04);
-        }
-
-        .gallery figcaption {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 8px 10px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
-            color: #e6f2eb;
-            font-size: 13px;
-        }
-
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 28px 0;
-            margin-top: 36px;
-            color: var(--muted)
-        }
-
-        @media (max-width:980px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .services {
-                grid-template-columns: repeat(2, 1fr)
-            }
-
-            .cards {
-                grid-template-columns: 1fr
-            }
-
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width:620px) {
-            .services {
-                grid-template-columns: 1fr
-            }
-
-            .hero h1 {
-                font-size: 26px
-            }
-
-            .nav-hidden {
-                display: none
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .menu-toggle {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            /* Overlay mobile nav when opened */
-            .nav-hidden.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                right: 16px;
-                left: 16px;
-                top: 64px;
-                background: var(--card);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 12px;
-                padding: 12px;
-                gap: 10px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-                z-index: 999;
-            }
-
-            .container {
-                padding: 18px;
-            }
-
-            /* Stack About section on small screens */
-            .about {
-                flex-direction: column;
-                gap: 16px !important;
-                padding: 24px 0 !important;
-            }
-
-            .about-media {
-                width: 100% !important;
-            }
-
-            .about-media img {
-                aspect-ratio: 4 / 3;
-                height: auto;
-            }
-        }
-
-        .form {
-            background: var(--card);
-            padding: 16px;
-            border-radius: 12px
-        }
-
-        label {
-            display: block;
-            font-size: 13px;
-            color: var(--muted);
-            margin-bottom: 6px
-        }
-
-        input,
-        textarea,
-        select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background-color: #000f02;
-            /* ensure dark control surface */
-            color: inherit;
-            font-family: inherit;
-        }
-
-        /* Force dark dropdown UI */
-        select {
-            color-scheme: dark;
-            /* hint browsers to render dark popups */
-        }
-
-        /* Dropdown list options (Chromium/Firefox) */
-        select option {
-            background-color: #0a0a0a;
-            /* black options panel */
-            color: #e6f2eb;
-        }
-
-        select option:hover,
-        select option:checked {
-            background-color: #111;
-            /* dark hover/selected */
-            color: #e6f2eb;
-        }
-
-        button {
-            background: var(--accent);
-            border: none;
-            padding: 10px 14px;
-            border-radius: 10px;
-            color: #042;
-            font-weight: 700;
-            cursor: pointer
-        }
-
-        .small {
-            font-size: 13px;
-            color: var(--muted)
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px
-        }
-
-        /* Floating WhatsApp button */
-        .whatsapp-fab {
-            position: fixed;
-            inset-block-end: calc(16px + env(safe-area-inset-bottom));
-            inset-inline-end: 16px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: #25D366;
-            /* WhatsApp green */
-            color: #04130d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-            text-decoration: none;
-            z-index: 1000;
-            transition: transform .2s ease, box-shadow .2s ease;
-            right: 16px;
-        }
-
-        .whatsapp-fab:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-        }
-
-        .whatsapp-fab svg {
-            width: 28px;
-            height: 28px;
-            fill: #ffffff;
-        }
-
-        @media (max-width: 620px) {
-            .whatsapp-fab {
-                width: 52px;
-                height: 52px;
-                inset-inline-end: 12px;
-            }
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -489,16 +47,23 @@
                     <div style="font-size:13px;color:var(--muted)">مرافق ميداني و خبير في إنجاح المشاريع الفلاحية</div>
                 </div>
             </div>
-            <nav id="site-nav" class="nav-hidden">
+            <nav id="site-nav" class="nav-hidden site-nav" aria-label="التنقل الرئيسي">
                 <a href="#services">الخدمات</a>
                 <a href="#about">من أنا</a>
                 <a href="#testimonials">آراء العملاء</a>
                 <a href="#gallery">المعرض</a>
-                <a href="#contact" class="cta">احجز استشارة</a>
+                <a href="#contact" class="cta">أطلب استشارة</a>
             </nav>
             <button class="menu-toggle"
                 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
-                aria-controls="site-nav" aria-expanded="false" onclick="toggleMenu(event)">القائمة</button>
+                aria-controls="site-nav" aria-expanded="false" onclick="toggleMenu(event)"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-menu">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg></button>
         </header>
 
         <main>
@@ -507,6 +72,17 @@
                     <h1 style="line-height: 1.2;">حلول عملية وعصرية لمشاريع تربية الماشية والنحل</h1>
                     <p>مرافقة شاملة من الفكرة إلى التنفيذ — التوجيه الفني، التكوين، الزيارات الميدانية، استراتيجيات
                         التغذية والتحكم في التكاليف في مشاريع الأبقار، الأغنام، الدواجن والنحل.</p>
+
+                    <!-- <div class="hero-badges">
+                        <span class="badge"><span class="dot"></span> مرافقة ميدانية عملية</span>
+                        <span class="badge"><span class="dot"></span> تخفيض ملحوظ للتكاليف</span>
+                    </div> -->
+
+                    <div class="hero-actions">
+                        <a class="cta" href="#contactFormSection">احجز استشارة الآن</a>
+                        <a class="btn-ghost" href="https://wa.me/21697279962?text=مرحبا، إريد حجز إستشارة"
+                            target="_blank" rel="noopener">تواصل عبر واتساب</a>
+                    </div>
 
 
 
@@ -540,21 +116,27 @@
                     </div>
                 </div>
 
-                <aside style="max-width:420px">
+                <aside>
                     <div class="form">
                         <h3 style="margin-top:0">اطلب استشارة 📝</h3>
                         <p class="small">أخبرني عن مشروعك وسأقترح أفضل الخطوات التالية.</p>
                         <form id="contactForm" action="https://formbold.com/s/6rpND" method="POST">
-                            <label for="name">الاسم الكامل</label>
-                            <input id="name" name="name" required />
-
-                            <label for="phone">الهاتف / واتساب</label>
-                            <input id="phone" name="phone" required />
+                            <div class="form-grid">
+                                <div>
+                                    <label for="name">الاسم الكامل</label>
+                                    <input id="name" name="name" placeholder="أدخل اسمك الكامل" required />
+                                </div>
+                                <div>
+                                    <label for="phone">الهاتف / واتساب</label>
+                                    <input id="phone" name="phone" placeholder="أدخل رقم هاتفك" inputmode="tel"
+                                        required />
+                                </div>
+                            </div>
 
                             <label for="service">نوع المشروع</label>
                             <select id="service" name="service"
                                 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                                <option>إختر...</option>
+                                <option>قم بالإختيار من هنا...</option>
                                 <option>أبقار</option>
                                 <option>أغنام</option>
                                 <option>دواجن</option>
@@ -563,15 +145,16 @@
                             </select>
 
                             <label for="message">وصف مختصر</label>
-                            <textarea id="message" name="message" rows="4"
+                            <textarea id="message" name="message" rows="10"
                                 placeholder="مثال: 50 دجاجة، بناية موجودة، أحتاج خطة تغذية" required></textarea>
 
                             <button type="submit"
                                 style="width:100%;margin-top:12px;
                                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">إرسال
                                 الطلب</button>
+                            <p class="form-note" style="margin: 10px 0 0 0">الرد خلال 24 ساعة</p>
                         </form>
-                        <p id="formMsg" class="small" style="margin-top:10px"></p>
+
                     </div>
 
 
@@ -581,44 +164,180 @@
             <section id="gallery" style="padding-top:18px">
                 <h2>المعرض</h2>
                 <p class="small">صور توضيحية من الزيارات الميدانية والتكوين والتطبيقات العملية.</p>
-                <div class="gallery">
-                    <figure>
-                        <a href="salem.png" target="_blank" rel="noopener">
-                            <img src="salem.png" alt="زيارة ميدانية وتشخيص الضيعة" loading="lazy">
-                        </a>
-                        <figcaption>زيارة ميدانية وتشخيص الضيعة</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="salem.png" target="_blank" rel="noopener">
-                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
-                        </a>
-                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="salem.png" target="_blank" rel="noopener">
-                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
-                        </a>
-                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="salem.png" target="_blank" rel="noopener">
-                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
-                        </a>
-                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="salem.png" target="_blank" rel="noopener">
-                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
-                        </a>
-                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="salem.png" target="_blank" rel="noopener">
-                            <img src="salem.png" alt="شرح برنامج التغذية ومتابعة التنفيذ" loading="lazy">
-                        </a>
-                        <figcaption>شرح برنامج التغذية ومتابعة التنفيذ</figcaption>
-                    </figure>
+                <div class="f-carousel" id="myCarousel">
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/salem.png"
+                        data-thumb-src="images/salem.png">
+                        <img data-lazy-src="images/salem.png" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/106262832_326213435058472_3665031415783643569_n.jpg"
+                        data-thumb-src="images/106262832_326213435058472_3665031415783643569_n.jpg">
+                        <img data-lazy-src="images/106262832_326213435058472_3665031415783643569_n.jpg"
+                            alt="صورة المعرض" />
+                    </div>
 
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210324_124952.jpg"
+                        data-thumb-src="images/20210324_124952.jpg">
+                        <img data-lazy-src="images/20210324_124952.jpg" alt="صورة المعرض" />
+                    </div>
+
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210330_101522.jpg"
+                        data-thumb-src="images/20210330_101522.jpg">
+                        <img data-lazy-src="images/20210330_101522.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210330_123022.jpg"
+                        data-thumb-src="images/20210330_123022.jpg">
+                        <img data-lazy-src="images/20210330_123022.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210331_133426.jpg"
+                        data-thumb-src="images/20210331_133426.jpg">
+                        <img data-lazy-src="images/20210331_133426.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210406_111012.jpg"
+                        data-thumb-src="images/20210406_111012.jpg">
+                        <img data-lazy-src="images/20210406_111012.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210407_090957.jpg"
+                        data-thumb-src="images/20210407_090957.jpg">
+                        <img data-lazy-src="images/20210407_090957.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210407_101007.jpg"
+                        data-thumb-src="images/20210407_101007.jpg">
+                        <img data-lazy-src="images/20210407_101007.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210407_112236.jpg"
+                        data-thumb-src="images/20210407_112236.jpg">
+                        <img data-lazy-src="images/20210407_112236.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210407_112618.jpg"
+                        data-thumb-src="images/20210407_112618.jpg">
+                        <img data-lazy-src="images/20210407_112618.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20210908_104632.jpg"
+                        data-thumb-src="images/20210908_104632.jpg">
+                        <img data-lazy-src="images/20210908_104632.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20211104_125654.jpg"
+                        data-thumb-src="images/20211104_125654.jpg">
+                        <img data-lazy-src="images/20211104_125654.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20211104_130006.jpg"
+                        data-thumb-src="images/20211104_130006.jpg">
+                        <img data-lazy-src="images/20211104_130006.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20211208_104341.jpg"
+                        data-thumb-src="images/20211208_104341.jpg">
+                        <img data-lazy-src="images/20211208_104341.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20211208_104524.jpg"
+                        data-thumb-src="images/20211208_104524.jpg">
+                        <img data-lazy-src="images/20211208_104524.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20220310_115614.jpg"
+                        data-thumb-src="images/20220310_115614.jpg">
+                        <img data-lazy-src="images/20220310_115614.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20230309_124810.jpg"
+                        data-thumb-src="images/20230309_124810.jpg">
+                        <img data-lazy-src="images/20230309_124810.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20230309_124913.jpg"
+                        data-thumb-src="images/20230309_124913.jpg">
+                        <img data-lazy-src="images/20230309_124913.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20230309_124928.jpg"
+                        data-thumb-src="images/20230309_124928.jpg">
+                        <img data-lazy-src="images/20230309_124928.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20230518_113702.jpg"
+                        data-thumb-src="images/20230518_113702.jpg">
+                        <img data-lazy-src="images/20230518_113702.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/20231004_093232.jpg"
+                        data-thumb-src="images/20231004_093232.jpg">
+                        <img data-lazy-src="images/20231004_093232.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/30MLAutomaticSheepDrench_AAF304D441479.gif"
+                        data-thumb-src="images/30MLAutomaticSheepDrench_AAF304D441479.gif">
+                        <img data-lazy-src="images/30MLAutomaticSheepDrench_AAF304D441479.gif" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/4-Figure2-1.png"
+                        data-thumb-src="images/4-Figure2-1.png">
+                        <img data-lazy-src="images/4-Figure2-1.png" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/48059051_1004494403094758_7625087914283630592_n.jpg"
+                        data-thumb-src="images/48059051_1004494403094758_7625087914283630592_n.jpg">
+                        <img data-lazy-src="images/48059051_1004494403094758_7625087914283630592_n.jpg"
+                            alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/5305_cropped_676x560.jpg"
+                        data-thumb-src="images/5305_cropped_676x560.jpg">
+                        <img data-lazy-src="images/5305_cropped_676x560.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/71811566_2630043560388412_4890769501513056256_n.png"
+                        data-thumb-src="images/71811566_2630043560388412_4890769501513056256_n.png">
+                        <img data-lazy-src="images/71811566_2630043560388412_4890769501513056256_n.png"
+                            alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/aba5cb9906063f8ad599747dab26.jpg"
+                        data-thumb-src="images/aba5cb9906063f8ad599747dab26.jpg">
+                        <img data-lazy-src="images/aba5cb9906063f8ad599747dab26.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/Azolla_filiculoides_MUN.jpg"
+                        data-thumb-src="images/Azolla_filiculoides_MUN.jpg">
+                        <img data-lazy-src="images/Azolla_filiculoides_MUN.jpg" alt="صورة المعرض" />
+                    </div>
+
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/fd20099wh.jpg"
+                        data-thumb-src="images/fd20099wh.jpg">
+                        <img data-lazy-src="images/fd20099wh.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/fiches_2008_Culturales_Agrosources_Eurolin_009.jpg"
+                        data-thumb-src="images/fiches_2008_Culturales_Agrosources_Eurolin_009.jpg">
+                        <img data-lazy-src="images/fiches_2008_Culturales_Agrosources_Eurolin_009.jpg"
+                            alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/foin-jendouba.jpg"
+                        data-thumb-src="images/foin-jendouba.jpg">
+                        <img data-lazy-src="images/foin-jendouba.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/images.jpg"
+                        data-thumb-src="images/images.jpg">
+                        <img data-lazy-src="images/images.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/istockphoto-175531668-612x612.jpg"
+                        data-thumb-src="images/istockphoto-175531668-612x612.jpg">
+                        <img data-lazy-src="images/istockphoto-175531668-612x612.jpg" alt="صورة المعرض" />
+                    </div>
+
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/Luzerne2.jpg"
+                        data-thumb-src="images/Luzerne2.jpg">
+                        <img data-lazy-src="images/Luzerne2.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery"
+                        data-src="images/produit-graine-de-soja-yellowrock.jpg"
+                        data-thumb-src="images/produit-graine-de-soja-yellowrock.jpg">
+                        <img data-lazy-src="images/produit-graine-de-soja-yellowrock.jpg" alt="صورة المعرض" />
+                    </div>
+
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/uv936824.jpg"
+                        data-thumb-src="images/uv936824.jpg">
+                        <img data-lazy-src="images/uv936824.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/vert_fluo.jpg"
+                        data-thumb-src="images/vert_fluo.jpg">
+                        <img data-lazy-src="images/vert_fluo.jpg" alt="صورة المعرض" />
+                    </div>
+                    <div class="f-carousel__slide" data-fancybox="gallery" data-src="images/110007010-matik_1_1.jpg"
+                        data-thumb-src="images/110007010-matik_1_1.jpg">
+                        <img data-lazy-src="images/110007010-matik_1_1.jpg" alt="صورة المعرض" />
+                    </div>
                 </div>
             </section>
 
@@ -659,7 +378,7 @@
                 </div>
 
                 <div class="about-media">
-                    <img src="salem.png" alt="فلاح في الحقل"
+                    <img src="images/salem.png" alt="فلاح في الحقل"
                         style="width:100%;border-radius:12px;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
                 </div>
             </section>
@@ -681,44 +400,139 @@
                 </div>
             </section>
 
-            <section id="contact" style="margin-top:40px;padding:40px 0;direction:rtl;">
-                <h2 style="font-size:2em;margin-bottom:20px;text-align:right;">التواصل والتعريف بالأسعار</h2>
+            <section id="contact" class="contact-section" dir="rtl">
+                <h2 class="contact-title">التواصل والتعريف بالأسعار</h2>
 
-                <div class="grid-2" style="display:flex;gap:40px;flex-wrap:wrap;">
-                    <div class="form"
-                        style="flex:1;min-width:280px;padding:24px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
-                        <h4 style="margin-top:0;font-size:1.3em;color:#fff;">معلومات الاتصال</h4>
-                        <p class="small" style="line-height:1.8;font-size:1.05em;color:#fff;">
-                            <strong>📞 الهاتف / واتساب:</strong> <br>‎+216 97 27 99 62<br>
-                            <strong>📧 البريد الإلكتروني:</strong> <br> salem.kouki@yahoo.fr<br>
-                            <strong>🗺️ الموقع:</strong> بنزرت — تونس — إمكانية التنقل لجميع الولايات
-                        </p>
+                <div class="contact-grid">
+                    <article class="contact-card">
+                        <h4>معلومات الاتصال</h4>
 
-                        <p class="small" style="line-height:1.8;font-size:1.05em;color:#fff;margin-top:16px;">
-                            <strong>الخدمات المتاحة:</strong><br>
-                            • زيارات ميدانية متعددة حسب الطلب<br>
+                        <ul class="contact-list">
+                            <li>
+                                <span class="icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.89.3 1.76.54 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.06a2 2 0 0 1 2.11-.45c.84.24 1.71.42 2.6.54A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <div class="label">الهاتف / واتساب</div>
+                                    <div class="value">
+                                        <a href="tel:+21697279962">‎+216 97 27 99 62</a>
+                                        <span class="sep">•</span>
+                                        <a href="https://wa.me/21697279962?text=مرحبا، إريد حجز إستشارة" target="_blank"
+                                            rel="noopener">مراسلة واتساب</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16v16H4z" fill="none" />
+                                        <path d="M22 6l-10 7L2 6" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <div class="label">البريد الإلكتروني</div>
+                                    <div class="value"><a href="mailto:salem.kouki@yahoo.fr">salem.kouki@yahoo.fr</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <div class="label">الموقع</div>
+                                    <div class="value">بنزرت — تونس — إمكانية التنقل لجميع الولايات</div>
+                                </div>
+                            </li>
+                        </ul>
 
-                            • حصص تكوين حسب الطلب<br>
-                            <em style="font-weight: 700; font-size: 20px;">عروض أسعار مخصصة تُقدّم بعد الجلسة
-                                الأولى.</em>
-                        </p>
-                    </div>
+                        <div class="contact-actions">
+                            <a class="btn cta" href="tel:+21697279962">اتصل الآن</a>
+                            <a class="btn btn-ghost" href="https://wa.me/21697279962?text=مرحبا، إريد حجز إستشارة"
+                                target="_blank" rel="noopener">تواصل عبر واتساب</a>
+                        </div>
 
-                    <!-- You can add a contact form or map in the second column if needed -->
+                        <div class="info-callout small">
+                            <strong>الخدمات المتاحة:</strong>
+                            <ul>
+                                <li>زيارات ميدانية متعددة حسب الطلب</li>
+                                <li>حصص تكوين حسب الطلب</li>
+                            </ul>
+                            <em>عروض أسعار مخصصة تُقدّم بعد الجلسة الأولى.</em>
+                        </div>
+                    </article>
+
+                    <aside class="contact-cta">
+                        <h4>استشارة سريعة</h4>
+                        <p class="small">أخبرني باحتياجاتك عبر النموذج، وسأتواصل معك خلال 24 ساعة لاقتراح خطة عمل
+                            مناسبة.</p>
+                        <a class="btn cta" href="#contactFormSection">احجز استشارة الآن</a>
+                        <p class="micro">بدون التزام • معلوماتك تبقى سرية</p>
+                    </aside>
                 </div>
             </section>
 
+            <div class="form" id="contactFormSection">
+                <h3 style="margin-top:0">اطلب استشارة 📝</h3>
+                <p class="small">أخبرني عن مشروعك وسأقترح أفضل الخطوات التالية.</p>
+                <form id="contactForm" action="https://formbold.com/s/6rpND" method="POST">
+                    <div class="form-grid">
+                        <div>
+                            <label for="name">الاسم الكامل</label>
+                            <input id="name" name="name" placeholder="أدخل اسمك الكامل" required />
+                        </div>
+                        <div>
+                            <label for="phone">الهاتف / واتساب</label>
+                            <input id="phone" name="phone" placeholder="أدخل رقم هاتفك" inputmode="tel" required />
+                        </div>
+                    </div>
 
+                    <label for="service">نوع المشروع</label>
+                    <select id="service" name="service"
+                        style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                        <option>قم بالإختيار من هنا...</option>
+                        <option>أبقار</option>
+                        <option>أغنام</option>
+                        <option>دواجن</option>
+                        <option>نحل</option>
+                        <option>مختلط / استشارة</option>
+                    </select>
+
+                    <label for="message">وصف مختصر</label>
+                    <textarea id="message" name="message" rows="4"
+                        placeholder="مثال: 50 دجاجة، بناية موجودة، أحتاج خطة تغذية" required></textarea>
+
+                    <button type="submit"
+                        style="width:100%;margin-top:12px;
+                                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">إرسال
+                        الطلب</button>
+                    <p class="form-note">الرد خلال 24 ساعة</p>
+                </form>
+
+            </div>
         </main>
 
         <footer>
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div class="footer-inner"
+                style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
                 <div>
                     <strong>سالم الكوكي</strong>
                     <div class="small">مرافق ميداني و خبير في إنجاح المشاريع الفلاحية</div>
                 </div>
-                <div class="small">© <span id="year"></span> •سالم الكوكي </div>
+                <div class="small">© <span id="year"></span> • سالم الكوكي </div>
             </div>
+            <style>
+
+            </style>
         </footer>
     </div>
 
@@ -765,6 +579,68 @@
             const btn = document.querySelector('.menu-toggle');
             if (btn) btn.setAttribute('aria-expanded', 'false');
         }));
+
+        // Sticky header border on scroll
+        const headerEl = document.querySelector('header');
+        const onScroll = () => {
+            if (!headerEl) return;
+            headerEl.classList.toggle('header-scrolled', window.scrollY > 8);
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Active nav link highlight using IntersectionObserver
+        const navEl = document.getElementById('site-nav');
+        const navLinks = navEl ? Array.from(navEl.querySelectorAll('a[href^="#"]')) : [];
+        const sections = navLinks
+            .map(a => document.querySelector(a.getAttribute('href')))
+            .filter(Boolean);
+
+        if ('IntersectionObserver' in window && sections.length) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = '#' + entry.target.id;
+                        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+                    }
+                });
+            }, { rootMargin: '-40% 0px -55% 0px', threshold: [0.25, 0.6] });
+
+            sections.forEach(sec => io.observe(sec));
+        }
+    </script>
+
+    <!-- Fancyapps UI scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.lazyload.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.arrows.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/carousel/carousel.thumbs.umd.js"></script>
+    <script>
+        // Initialize Fancyapps Carousel with Lazyload, Arrows, and Thumbs
+        (function () {
+            const el = document.getElementById('myCarousel');
+            if (!el || typeof Carousel !== 'function') return;
+            try {
+                Carousel(el, {
+                    Dots: false,
+                    Thumbs: {
+                        type: 'classic'
+                    }
+                }, { Lazyload, Arrows, Thumbs }).init();
+            } catch (e) {
+                console.warn('Carousel init failed', e);
+            }
+
+            // Bind Fancybox to the same slides
+            if (window.Fancybox && typeof Fancybox.bind === 'function') {
+                Fancybox.bind('[data-fancybox="gallery"]', {
+                    Thumbs: {
+                        type: 'classic'
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 
