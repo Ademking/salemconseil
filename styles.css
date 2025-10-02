@@ -114,6 +114,9 @@ nav a {
   border-radius: 10px;
   position: relative;
   transition: color 0.2s ease, background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .site-nav a:hover {
@@ -575,6 +578,15 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
+  .nav-hidden.open .nav-ico {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-hidden.open a span {
+    display: inline-block;
+  }
+
   .container {
     padding: 18px;
   }
@@ -693,6 +705,11 @@ button:hover {
 @media (max-width: 620px) {
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  #site-nav a {
+    width: 100%;
+    text-align: center;
   }
 }
 

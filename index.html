@@ -48,11 +48,56 @@
                 </div>
             </div>
             <nav id="site-nav" class="nav-hidden site-nav" aria-label="التنقل الرئيسي">
-                <a href="#services">الخدمات</a>
-                <a href="#about">من أنا</a>
-                <a href="#testimonials">آراء العملاء</a>
-                <a href="#gallery">المعرض</a>
-                <a href="#contact" class="cta">أطلب استشارة</a>
+                <a href="#services">
+                    <svg class="nav-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                        focusable="false">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>الخدمات</span>
+                </a>
+                <a href="#about">
+                    <svg class="nav-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                        focusable="false">
+                        <path d="M20 21a8 8 0 0 0-16 0"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>من أنا</span>
+                </a>
+                <a href="#testimonials">
+                    <svg class="nav-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                        focusable="false">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                    <span>آراء العملاء</span>
+                </a>
+                <a href="#gallery">
+                    <svg class="nav-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                        focusable="false">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <path d="M21 15l-5-5L5 21"></path>
+                    </svg>
+                    <span>المعرض</span>
+                </a>
+                <a href="#contact" class="cta">
+                    <svg class="nav-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                        focusable="false">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.89.3 1.76.54 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.06a2 2 0 0 1 2.11-.45c.84.24 1.71.42 2.6.54A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    <span>أطلب استشارة</span>
+                </a>
             </nav>
             <button class="menu-toggle"
                 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
@@ -570,6 +615,26 @@
             const open = !nav.classList.contains('open');
             nav.classList.toggle('open', open);
             e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+            // Backdrop + scroll lock for mobile
+            const existingBackdrop = document.querySelector('.nav-backdrop');
+            if (open) {
+                document.body.classList.add('menu-open');
+                if (!existingBackdrop) {
+                    const backdrop = document.createElement('div');
+                    backdrop.className = 'nav-backdrop';
+                    backdrop.addEventListener('click', () => {
+                        nav.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                        e.currentTarget.setAttribute('aria-expanded', 'false');
+                        backdrop.remove();
+                    });
+                    document.body.appendChild(backdrop);
+                }
+            } else {
+                document.body.classList.remove('menu-open');
+                if (existingBackdrop) existingBackdrop.remove();
+            }
         }
 
         // Close menu after navigation
@@ -578,6 +643,9 @@
             nav.classList.remove('open');
             const btn = document.querySelector('.menu-toggle');
             if (btn) btn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
+            const bd = document.querySelector('.nav-backdrop');
+            if (bd) bd.remove();
         }));
 
         // Sticky header border on scroll
